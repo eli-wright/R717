@@ -168,7 +168,7 @@
             font-size: 1.1em;
         }
         
-        .card ul {
+        .card ul, .card ol {
             padding-left: 20px;
             line-height: 1.6;
         }
@@ -640,6 +640,204 @@
                 grid-template-columns: 1fr;
             }
         }
+        /* Styles for the new Flash Gas Calculator */
+        #flashGasCalculator {
+            background: none;
+            padding: 0;
+            margin-top: 0;
+        }
+        .calc-controls {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: auto auto;
+            gap: 25px;
+            margin-bottom: 20px;
+            color: #e0e0e0;
+        }
+        .refrigerant-group {
+            grid-column: 1 / -1;
+        }
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+        .control-group label {
+            margin-bottom: 10px;
+            font-weight: 500;
+            font-size: 0.9em;
+            color: #b0b8d7;
+        }
+        .control-group input, .control-group select {
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid #4a4e6e;
+            font-size: 1em;
+            background: #23263f;
+            color: white;
+            transition: all 0.2s ease-in-out;
+        }
+        .control-group input:focus, .control-group select:focus {
+            outline: none;
+            border-color: #8a7ff7;
+            box-shadow: 0 0 0 3px rgba(138, 127, 247, 0.2);
+        }
+        .control-group .input-group {
+            display: flex;
+        }
+        .control-group .input-group input {
+            flex-grow: 1;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        .control-group .input-group select {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            flex-shrink: 0;
+            width: 80px;
+            border-left: none;
+        }
+        .control-group select option {
+            background: #333;
+        }
+        
+        .subcooled-group {
+            grid-column: 1 / -1;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(0,0,0,0.2);
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .subcooled-group label {
+            margin-bottom: 0;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        #isSubcooled {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        #subcoolingAmountGroup {
+            grid-column: 1 / -1;
+            display: none; /* Initially hidden */
+        }
+        
+        #flashGasCalculator .ai-btn {
+            display: block;
+            width: 100%;
+            margin: 10px 0 0 0;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            font-weight: 600;
+            background: linear-gradient(90deg, #8a7ff7, #6556e0);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(138, 127, 247, 0.3);
+            border: none;
+        }
+        .calc-result-container {
+            margin-top: 30px;
+            padding: 25px 30px;
+            background: rgba(0,0,0,0.25);
+            border-radius: 15px;
+            color: white;
+            display: none;
+            border: 1px solid #4a4e6e;
+        }
+        .result-text {
+            font-size: 2.2em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .result-text span {
+            color: #ff8fab;
+        }
+        .result-bar-container {
+            display: flex;
+            width: 100%;
+            height: 12px;
+            border-radius: 6px;
+            overflow: hidden;
+            border: none;
+            background: rgba(0,0,0,0.3);
+        }
+        .result-bar-flash {
+            background: linear-gradient(90deg, #ff8fab 0%, #d75e92 100%);
+            transition: width 0.5s ease;
+        }
+        .result-bar-liquid {
+            background: linear-gradient(90deg, #8a7ff7 0%, #6556e0 100%);
+            transition: width 0.5s ease;
+        }
+        .result-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            font-size: 0.9em;
+            padding: 0 10px;
+        }
+        .result-analysis {
+            margin-top: 20px;
+            font-style: italic;
+            font-size: 0.9em;
+            text-align: center;
+            color: #b0b8d7;
+            background: none;
+            padding: 0;
+            border-radius: 0;
+        }
+        
+        .subcooling-note {
+            margin-top: 20px;
+            padding: 20px;
+            background: #e9f5ff;
+            border-left: 5px solid #007bff;
+            border-radius: 8px;
+            color: #333;
+        }
+        .subcooling-note strong {
+            color: #0056b3;
+        }
+
+        /* NEW Detailed Result Styles */
+        #detailedResult {
+            text-align: left;
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid #4a4e6e;
+        }
+        #detailedResult h4 {
+            color: #cdd3ee;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+        .result-block {
+            background: rgba(0,0,0,0.2);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .result-block p {
+            line-height: 1.7;
+            font-size: 0.95em;
+        }
+        .result-block .formula-display {
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+            font-weight: bold;
+            text-align: center;
+            padding: 10px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 5px;
+            margin: 10px 0;
+            color: #fff;
+        }
+        .result-block .formula-display span {
+            color: #ff8fab;
+        }
     </style>
 </head>
 <body>
@@ -660,6 +858,7 @@
             <button class="tab-btn" onclick="showSection('diagram', this)">📊 P-h Diagram</button>
             <button class="tab-btn" onclick="showSection('components', this)">⚙️ Components</button>
             <button class="tab-btn" onclick="showSection('systems', this)">🏭 System Types</button>
+            <button class="tab-btn" onclick="showSection('flashgas', this)">⚡ Flash Gas</button>
             <button class="tab-btn" onclick="showSection('safety', this)">🛡️ Safety</button>
             <button class="tab-btn" onclick="showSection('calculations', this)">🧮 Calculations</button>
             <button class="tab-btn" onclick="showSection('troubleshooting', this)">🔧 Troubleshooting</button>
@@ -829,7 +1028,7 @@
             
             <div class="card">
                 <h3>The Engineer's Roadmap</h3>
-                <p>The P-h diagram is the most powerful tool for visualizing the refrigeration cycle. It's a map that tells the story of the refrigerant's state—its pressure, its energy (enthalpy), and whether it's a liquid, vapor, or a mix—at every point in the system. Mastering this diagram is key to understanding system performance and troubleshooting problems.</p>
+                <p>The P-h diagram is the most powerful tool for visualizing the refrigeration cycle. It's a map that tells the story of the refrigerant's state, its pressure, its energy (enthalpy), and whether it's a liquid, vapor, or a mix, at every point in the system. Mastering this diagram is key to understanding system performance and troubleshooting problems.</p>
             </div>
 
             <div class="ph-diagram">
@@ -890,15 +1089,52 @@
                 <div class="component-grid" style="margin-top: 20px;">
                     <div class="card" style="border-left-color: #3498db;">
                         <h4>💧 Subcooled Liquid Region (Left)</h4>
-                        <p>Here, ammonia is a stable, high-pressure liquid, cooled below its boiling point. It holds all its cooling potential, ready to be released.</p>
+                        <p>Here, ammonia is a stable liquid. At a given high pressure, its temperature has been brought below its boiling point (saturation temperature). This 'subcooled' state is key for system efficiency.</p>
                     </div>
                     <div class="card" style="border-left-color: #e74c3c;">
                         <h4>💨 Two-Phase Dome (Center)</h4>
-                        <p>This is where the magic happens. Inside the dome, ammonia exists as a chaotic, boiling mixture of liquid and vapor. This is the only state where it can absorb or reject large amounts of heat without changing temperature.</p>
+                        <p>This is where the magic happens. Inside the dome, ammonia is 'saturated', a boiling mixture of liquid and vapor. In this state, <strong>pressure and temperature are locked together</strong>. For any given pressure, there is only one possible temperature, and vice versa. This is the only state where it can absorb or reject large amounts of heat without changing its temperature.</p>
                     </div>
                     <div class="card" style="border-left-color: #f39c12;">
                         <h4>🔥 Superheated Vapor Region (Right)</h4>
-                        <p>In this state, ammonia is a hot, low-density gas, heated above its boiling point. It has finished its cooling job and is now full of heat energy that needs to be removed from the system.</p>
+                        <p>In this state, ammonia is a stable gas. At a given pressure, its temperature has been raised above its boiling point (saturation temperature). This 'superheated' vapor is full of heat energy that must be removed by the condenser.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>A Refrigerant's Journey: Mapping Components to the Cycle</h3>
+                <p>Let's trace the path of ammonia through the system, watching how its state changes on the P-h diagram and seeing which component is responsible for each step.</p>
+                
+                <div class="journey-step evaporation">
+                    <div class="journey-icon">🌬️</div>
+                    <div class="journey-text">
+                        <h4>Evaporation: The Heat Sponge</h4>
+                        <p>In the <strong>Evaporator</strong>, the refrigerant soaks up heat at a constant low pressure, causing it to boil at a constant low temperature. This phase change from liquid to vapor is the long horizontal line at the bottom of the diagram, showing a large increase in energy (enthalpy).</p>
+                    </div>
+                </div>
+
+                <div class="journey-step compression">
+                    <div class="journey-icon">⚙️</div>
+                    <div class="journey-text">
+                        <h4>Compression: The Big Squeeze</h4>
+                        <p>The <strong>Compressor</strong> takes the vapor and adds work, skyrocketing its pressure and temperature. An <strong>Accumulator</strong> before the compressor ensures no liquid enters. On the diagram, this is the sharp upward and rightward path.</p>
+                    </div>
+                </div>
+
+                <div class="journey-step condensation">
+                    <div class="journey-icon">💧</div>
+                    <div class="journey-text">
+                        <h4>Condensation: The Cool Down</h4>
+                        <p>The hot gas enters the <strong>Condenser</strong> and rejects its heat at a constant high pressure, causing it to condense back into a liquid at a constant high temperature. This liquid is stored in the <strong>High Pressure Receiver</strong>. This is the long horizontal line at the top of the diagram, showing a large decrease in energy.</p>
+                    </div>
+                </div>
+                
+                <div class="journey-step expansion">
+                    <div class="journey-icon">⚡</div>
+                    <div class="journey-text">
+                        <h4>Expansion: The Pressure Plunge</h4>
+                        <p>The high-pressure liquid passes through the <strong>Expansion Valve</strong>, where its pressure drops instantly. Because pressure and boiling temperature are linked, this massive pressure drop causes an equally dramatic drop in temperature. This throttling process is a straight vertical line down on the diagram.</p>
                     </div>
                 </div>
             </div>
@@ -947,6 +1183,34 @@
                     <li>An <strong>Economizer</strong> port on a screw compressor creates an intermediate step on the compression line. It takes some of the flash gas created during expansion and injects it partway through the compression process. This improves efficiency by subcooling the main liquid flow, increasing the refrigeration effect.</li>
                     <li>An <strong>Intercooler</strong> in a two-stage system creates an entire intermediate pressure loop on the diagram. It sits between the low and high pressure levels, desuperheating the gas from the first stage of compression before it enters the second, which saves a significant amount of energy.</li>
                 </ul>
+            </div>
+            
+            <div class="card" style="border-left-color: #1e3c72;">
+                <h3>Deeper Dive: The "Why" Behind the Diagram</h3>
+                
+                <h4>Understanding the States of Matter: Subcooled, Saturated, and Superheated</h4>
+                <p>Let's use a simple analogy: a pot of water on a stove at sea level.</p>
+                <ul>
+                    <li><strong>Subcooled Liquid:</strong> Your pot of water is at 70°F. Its boiling point is 212°F. Since it's far below its boiling point, it's a stable liquid. This is "subcooled" water. In a refrigeration system, this is stable liquid ammonia, ready to do work.</li>
+                    <li><strong>Saturated:</strong> You've heated the water to exactly 212°F. It's now simmering and boiling, with both water (liquid) and steam (vapor) in the pot, both at 212°F. This is the "saturated" state. In this state, pressure and temperature are locked together. If you add more heat, you just make more steam, the temperature won't rise until all the water is gone. This is what happens inside an evaporator and condenser.</li>
+                    <li><strong>Superheated Vapor:</strong> All the water has boiled away, and you continue to heat the steam. The steam's temperature rises to 250°F. This is "superheated" steam, it's a stable vapor that is hotter than its boiling point. In a refrigeration system, this is what goes into the compressor.</li>
+                </ul>
+
+                <h4 style="margin-top: 20px;">Why Pressure & Temperature Change (or Don't)</h4>
+                <ul>
+                    <li><strong>Evaporation & Condensation (Constant P & T):</strong> This is the magic of "latent heat." When ammonia is boiling in the evaporator or condensing in the condenser, it is in the saturated state. All the energy being added or removed goes into changing its phase (liquid to gas, or gas to liquid), NOT changing its temperature. The pressure stays constant because these are large components (coils, vessels) and the system is just moving refrigerant through them.</li>
+                    <li><strong>Compression (P ↑, T ↑):</strong> The compressor is a pump for vapor. Its only job is to squeeze the ammonia vapor into a much smaller space. Just like pumping air into a bicycle tire, this work of compression dramatically increases both the pressure and the temperature of the vapor.</li>
+                    <li><strong>Expansion (P ↓, T ↓):</strong> The expansion valve is a small opening or restriction. The high-pressure liquid is forced through it, and on the other side, there is a large, low-pressure area (the evaporator). The pressure plummets instantly. Because the refrigerant's boiling point is tied to its pressure, a massive drop in pressure causes a massive drop in boiling point and thus, its temperature.</li>
+                </ul>
+
+                <h4 style="margin-top: 20px;">Velocity vs. Pressure: The Garden Hose Analogy</h4>
+                <p>This is a common point of confusion. A pump's job is to move fluid (create velocity), not necessarily to create the system's high pressure.</p>
+                <ul>
+                    <li><strong>Pressure</strong> is the "push" behind the water, coming from the city's water tower. It's high in the pipe whether the water is moving or not. In refrigeration, the compressor creates this system-wide high pressure.</li>
+                    <li><strong>Velocity</strong> is the "speed" the water is moving.</li>
+                </ul>
+                <p><strong>The Analogy:</strong> Imagine a garden hose with a steady flow. Now, put your thumb over the end. The pressure back at the spigot hasn't changed, but the water leaving your thumb is spraying out much faster. You've created a restriction, and to get the same amount of water through a smaller hole, its <strong>velocity has to increase</strong>. You didn't create more pressure; you just converted some of the existing pressure into speed.</p>
+                <p><strong>The Recirculator Pump:</strong> A recirculator pump in an ammonia system works the same way. It sits on the low-pressure side of the system. Its job is not to create high pressure, but simply to <strong>circulate</strong> the low-pressure liquid. It adds just enough "push" (a small pressure differential) to overcome pipe friction and move the liquid through the evaporators. The overall low pressure in that part of the system is maintained by the suction of the giant compressors, not this small circulating pump.</p>
             </div>
 
         </div>
@@ -1297,6 +1561,175 @@
             </div>
         </div>
 
+        <!-- Flash Gas Section -->
+        <div id="flashgas" class="content-section">
+            <h2 class="section-title">⚡ The Science of Flash Gas</h2>
+
+            <div class="card">
+                <h3>What is Flash Gas? A Tale of Two Scenarios</h3>
+                <p><strong>Flash Gas</strong> is the vapor that forms spontaneously when a high-pressure liquid refrigerant undergoes a sudden pressure drop. Think of it as instant boiling. This isn't a system flaw but a necessary consequence of thermodynamics. However, its impact on the system is entirely dependent on <strong>where</strong> it happens.</p>
+                <div class="component-grid" style="margin-top: 20px;">
+                    <div class="card" style="border-left-color: #27ae60;">
+                        <h4>✅ The Asset: Necessary Cooling</h4>
+                        <p>When flash gas forms immediately <strong>after</strong> the expansion valve, it's doing its job. This violent, instantaneous boiling is what chills the remaining liquid refrigerant down to the low temperature needed for effective cooling in the evaporator.</p>
+                    </div>
+                    <div class="card" style="border-left-color: #c0392b;">
+                        <h4>❌ The Liability: Premature Flashing</h4>
+                        <p>When flash gas forms <strong>before</strong> the expansion valve (in the main liquid line), it's always a problem. This rogue vapor takes up space, reduces system capacity, causes control valves to malfunction, and indicates a fault like low refrigerant charge or excessive pressure drop.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Flash Gas: An Analogy for Everyone</h3>
+                <p>Imagine boiling water. At sea level, it boils at 212°F. But if you take that same pot of water to the top of a high mountain where the air pressure is much lower, it might boil at only 190°F. The water didn't get hotter; the pressure drop just lowered its boiling point.</p>
+                <p>This is exactly what happens to refrigerant. A warm, high-pressure liquid from the condenser is suddenly forced through an expansion valve into a low-pressure environment. Its boiling point instantly plummets. The liquid is now "superheated" relative to its new boiling point and must cool down immediately. The only way it can do this is by boiling a fraction of itself, that fraction is the flash gas.</p>
+            </div>
+
+             <div class="card">
+                <h3>The Physics of Flash Gas: An Energy Balancing Act</h3>
+                <p>Flash gas is a direct consequence of the first law of thermodynamics. To understand it, let's follow the energy (enthalpy) of the refrigerant as it moves through the expansion valve.</p>
+                <ol style="list-style-type: decimal; padding-left: 25px; margin-top: 15px;">
+                    <li style="margin-bottom: 15px;"><strong>Stable High-Energy State:</strong> Before the expansion valve, the ammonia is a warm, high-pressure liquid. It is stable because the high pressure is preventing it from boiling. It carries a significant amount of thermal energy (enthalpy) from its journey through the condenser.</li>
+                    <li style="margin-bottom: 15px;"><strong>The Isenthalpic Process:</strong> The expansion valve causes a near-instantaneous drop in pressure. This process is so rapid that the refrigerant has no time to exchange heat with its surroundings. As a result, the total energy (enthalpy) of the ammonia remains constant as it passes through the valve.</li>
+                    <li style="margin-bottom: 15px;"><strong>The Unstable Low-Pressure State:</strong> Immediately after the valve, the ammonia is now in a low-pressure environment but still possesses its original high energy level. The problem is, at this new low pressure, its boiling point is drastically lower. The liquid is now far too energetic and warm to remain stable in its liquid form. It has an "energy surplus."</li>
+                    <li style="margin-bottom: 15px;"><strong>The Instant Solution - Latent Heat:</strong> The liquid must immediately shed this excess energy to cool itself down to its new, lower boiling point. The most efficient way to shed a massive amount of thermal energy is through a phase change, specifically boiling. A fraction of the liquid instantly boils, or "flashes," into vapor. This process requires a large amount of energy known as the latent heat of vaporization.</li>
+                </ol>
+                <p>The energy required for this boiling is pulled directly from the remaining liquid. The vapor created is the <strong>flash gas</strong>, and the remaining mass of liquid is now chilled to the low temperature required for refrigeration in the evaporator. Flash gas is the unavoidable thermodynamic "cost" of rapidly lowering the refrigerant's temperature.</p>
+            </div>
+
+            <div class="card">
+                <h3>Calculating Flash Gas: A Step-by-Step Guide</h3>
+                <p>We calculate the percentage of flash gas using a simple formula that compares the refrigerant's energy levels. Let's walk through a real-world example.</p>
+                <div class="formula-box">
+                    <strong>% Flash Gas = (h - hf) / hfg * 100</strong>
+                </div>
+                
+                <h4>Decoding the Formula:</h4>
+                <ul>
+                    <li><strong>h</strong>: The starting energy (enthalpy) of the liquid before the valve. This is our "energy budget."</li>
+                    <li><strong>hf</strong>: The energy the liquid is allowed to have at the new low pressure to remain 100% liquid.</li>
+                    <li><strong>(h - hf)</strong>: The "excess energy" that must be dumped.</li>
+                    <li><strong>hfg</strong>: The energy "cost" to boil one pound of liquid into vapor at that new low pressure.</li>
+                </ul>
+                <p>So, the formula is just: <strong>(Excess Energy) / (Cost of Boiling)</strong>.</p>
+
+                <h4 style="margin-top: 20px;">Worked Example: Ammonia System</h4>
+                <p><strong>Scenario:</strong> Saturated liquid ammonia at <strong>85°F</strong> (which corresponds to 151.7 psig) is expanded to <strong>-5°F</strong> (which corresponds to 9.0 psig).</p>
+                <ol>
+                    <li><strong>Find Starting Energy (h):</strong> We look at a refrigerant table for 85°F. The enthalpy of saturated liquid (hf) is <strong>137.6 BTU/lb</strong>. So, h = 137.6.</li>
+                    <li><strong>Find Destination Properties:</strong> Now we look at the table for -5°F. We need two values:
+                        <ul>
+                            <li>The liquid energy (hf) is <strong>37.3 BTU/lb</strong>.</li>
+                            <li>The vapor energy (hg) is <strong>609.9 BTU/lb</strong>.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Find the Cost of Boiling (hfg):</strong> This is simply the difference between the vapor and liquid energy at the destination. hfg = 609.9 - 37.3 = <strong>572.6 BTU/lb</strong>.</li>
+                    <li><strong>Do the Math:</strong><br>
+                    Flash Gas % = (137.6 - 37.3) / 572.6 * 100<br>
+                    Flash Gas % = (100.3) / 572.6 * 100<br>
+                    Flash Gas % = 0.175 * 100 = <strong>17.5%</strong>
+                    </li>
+                </ol>
+                <p><strong>Conclusion:</strong> In this common scenario, <strong>17.5%</strong> of the refrigerant mass turns into flash gas before it even starts cooling anything. This means for every 100 lbs circulated, only 82.5 lbs of useful liquid makes it to the evaporator.</p>
+            </div>
+
+            <div class="interactive-demo" style="background: linear-gradient(145deg, #322c58 0%, #292d4b 100%); border-radius: 20px; padding: 40px;">
+                <h3 style="font-size: 1.8em;">Flash Gas Percentage Calculator</h3>
+                <p style="margin-bottom: 20px; color: #b0b8d7;">See how operating conditions and refrigerant type affect efficiency.</p>
+                <div id="flashGasCalculator">
+                    <div class="calc-controls">
+                        <div class="control-group refrigerant-group">
+                            <label for="refrigerant">Refrigerant:</label>
+                            <select id="refrigerant">
+                                <option value="R717">Ammonia (R-717)</option>
+                                <option value="R134a">R-134a</option>
+                                <option value="R744">CO₂ (R-744)</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label for="condValue">Upstream Condition (Before Valve):</label>
+                            <div class="input-group">
+                                <input type="number" id="condValue" value="152.3">
+                                <select id="condUnit">
+                                    <option value="PSIG">PSIG</option>
+                                    <option value="F">°F</option>
+                                    <option value="PSIA">PSIA</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label for="evapValue">Downstream Condition (After Valve):</label>
+                            <div class="input-group">
+                                <input type="number" id="evapValue" value="25.3">
+                                <select id="evapUnit">
+                                    <option value="PSIG">PSIG</option>
+                                    <option value="F">°F</option>
+                                    <option value="PSIA">PSIA</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="control-group subcooled-group">
+                            <input type="checkbox" id="isSubcooled">
+                            <label for="isSubcooled">Subcooled?</label>
+                        </div>
+                         <div class="control-group" id="subcoolingAmountGroup">
+                            <label for="subcoolingAmount">Subcooling Amount (°F):</label>
+                            <input type="number" id="subcoolingAmount" value="3.6">
+                        </div>
+                    </div>
+                    <button class="ai-btn" onclick="calculateFlashGas()">Calculate</button>
+                    
+                    <div id="calcResult" class="calc-result-container">
+                        <div class="result-text">
+                            <span id="flashGasPercent">17.5%</span> Flash Gas
+                        </div>
+                        <div class="result-bar-container">
+                            <div class="result-bar-flash" id="flashGasBar"></div>
+                            <div class="result-bar-liquid" id="liquidBar"></div>
+                        </div>
+                        <div class="result-labels">
+                            <span>Ineffective for Cooling</span>
+                            <span>Useful Liquid</span>
+                        </div>
+                        <div id="resultAnalysis" class="result-analysis">
+                            <!-- Analysis text goes here -->
+                        </div>
+
+                        <!-- NEW Detailed Result Section -->
+                        <div id="detailedResult">
+                            <h4>The Calculation Breakdown</h4>
+                            <div class="result-block">
+                                <p><strong>The Formula:</strong></p>
+                                <div class="formula-display">(h - hf) / hfg</div>
+                                <p>Your Calculation:</p>
+                                <div class="formula-display">
+                                    (<span id="result-formula-h">137.6</span> - <span id="result-formula-hf">37.3</span>) / <span id="result-formula-hfg">572.6</span> = <span id="flashGasDecimal">0.175</span>
+                                </div>
+                            </div>
+                            
+                            <div class="result-block" style="background: rgba(255,255,255,0.1);">
+                                <h4>Final Summary</h4>
+                                <p id="final-summary-text">Based on your inputs, the liquid refrigerant has too much energy for the low-pressure side. It must instantly boil 17.5% of its own mass to get rid of this excess energy, which leaves only 82.5% of the liquid to perform the actual cooling in the evaporator.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="subcooling-note">
+                    <h4>What does checking "Subcooled?" and entering 3.6°F mean?</h4>
+                    <p><strong>When to use this option:</strong> You check this box when you know the liquid refrigerant going to your expansion valve is colder than its boiling (saturation) temperature. The number you enter is <strong>how many degrees colder</strong> it is.</p>
+                    <p><strong>Example:</strong> Let's say your upstream pressure is 152.3 PSIG. At this pressure, ammonia wants to boil at 85°F. If you enter <strong>3.6°F</strong> of subcooling, it means your actual liquid temperature is <strong>81.4°F</strong> (85 - 3.6). This seemingly small difference makes a big impact on efficiency!</p>
+                    <h4>Where does this subcooling happen in a real system?</h4>
+                    <ul>
+                        <li><strong>In the Condenser:</strong> On a cool day, or if your condenser is slightly oversized, the liquid refrigerant might linger in the condenser tubes after it has fully turned to liquid. This extra time allows it to cool down a few more degrees below its boiling point.</li>
+                        <li><strong>In a Dedicated Subcooler:</strong> Some systems have a specific heat exchanger (a subcooler) whose only job is to chill the high-pressure liquid before it travels to the expansion valves.</li>
+                        <li><strong>Liquid/Suction Heat Exchanger:</strong> A common efficiency trick is to run the cold suction line next to the warm liquid line. The cold suction gas absorbs some heat from the warm liquid, subcooling the liquid while superheating the suction gas (which helps protect the compressor).</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
         <!-- Safety Section -->
         <div id="safety" class="content-section">
             <h2 class="section-title">Safety and Regulatory Compliance</h2>
@@ -1438,7 +1871,7 @@
             
             <div class="card">
                 <h3>Step 4: The Efficiency Multiplier - The Overfeed Ratio</h3>
-                <p>In many large systems, we use a technique called <strong>Liquid Overfeed</strong>. Instead of sending just enough liquid to the evaporator to boil off, we send much more—typically 3 to 4 times the amount. This is the <strong>Overfeed Ratio</strong>.</p>
+                <p>In many large systems, we use a technique called <strong>Liquid Overfeed</strong>. Instead of sending just enough liquid to the evaporator to boil off, we send much more, typically 3 to 4 times the amount. This is the <strong>Overfeed Ratio</strong>.</p>
                 <p>Why do this? It guarantees the entire inside surface of the evaporator is always drenched in liquid ammonia, which makes the heat transfer incredibly efficient. This decision, however, directly multiplies the required GPM, meaning we need a much larger pump. It's a trade-off between higher equipment cost and better long-term performance.</p>
             </div>
 
@@ -1749,7 +2182,7 @@
                         <li>Faulty or improperly located control sensors.</li>
                         <li>Rapid changes in system load.</li>
                     </ul>
-<h4>Solutions</h4>
+                    <h4>Solutions</h4>
                     <ul>
                         <li>Widen the differential pressure settings on the control cutouts.</li>
                         <li>If oversized, consider installing capacity control or a smaller compressor.</li>
@@ -1833,7 +2266,7 @@
 
     <script>
         // --- State Management ---
-        const totalSections = 10; // Updated for Q&A page
+        const totalSections = 11; // Updated for Flash Gas & Q&A page
         const viewedSections = new Set(['overview']);
 
         // --- Tab & Content Switching ---
@@ -1955,10 +2388,12 @@
         
         // --- Q&A Data and Logic ---
         const qaData = [
+            { q: "What exactly is 'Latent Heat' and why is it the secret to refrigeration?", a: "<strong>Latent heat is the 'hidden' energy that a substance absorbs or releases to change its state (like from liquid to gas) without changing its temperature.</strong> This is the opposite of 'sensible heat,' which is the energy you can feel or measure with a thermometer.<br><br><strong>The Boiling Water Analogy:</strong><br>Imagine a pot of water on a stove.<br>1. <strong>Sensible Heat:</strong> As you heat the water from 70°F to 211°F, its temperature rises. This is sensible heat.<br>2. <strong>Latent Heat:</strong> At 212°F, the water starts to boil. Even though the stove is still pumping a massive amount of heat into the pot, the temperature of the water and steam stays locked at exactly 212°F until every last drop has boiled away. The enormous amount of 'hidden' energy the water is absorbing to break its liquid bonds and become steam is the <strong>Latent Heat of Vaporization</strong>.<br><br><strong>How it applies to Refrigeration:</strong><br>This is precisely what happens in an evaporator. Liquid ammonia at 5°F absorbs huge amounts of latent heat from the surrounding room, causing it to boil. This process provides the powerful cooling effect, all while the ammonia's temperature remains constant at 5°F. Ammonia is an excellent refrigerant because its latent heat value is extremely high, meaning every pound can absorb a lot of heat." },
             { q: "Why is ammonia called R-717?", a: "The '7' indicates it's an inorganic compound. '1' is for its group in the periodic table (Nitrogen), and the final '7' is its molecular weight (17, rounded)." },
             { q: "What is the single biggest danger of an ammonia leak?", a: "Toxicity. While it can be flammable in very specific concentrations, the immediate danger to personnel is its toxicity. The IDLH (Immediately Dangerous to Life or Health) level is 300 ppm." },
             { q: "Why can't you use copper or brass with ammonia?", a: "Ammonia is highly corrosive to copper, brass, and other copper alloys, especially in the presence of moisture. It will rapidly eat through piping and components, causing catastrophic failures. All system components must be steel or stainless steel." },
             { q: "What is 'slugging' and why is it so bad for a compressor?", a: "Slugging is when liquid refrigerant enters the compressor. Since liquids cannot be compressed, this causes extreme mechanical stress, leading to broken valves, connecting rods, or a completely destroyed compressor. This is why accumulators are critical safety devices." },
+            { q: "Why doesn't liquid ammonia boil away instantly if it's stored outside on a hot day?", a: "This is a great question that gets to the heart of how refrigeration works! The key is the relationship between <strong>pressure and boiling point</strong>. The commonly cited boiling point for ammonia (-28°F or -33°C) is its boiling point at atmospheric pressure (0 psig). However, in a refrigeration system, liquid ammonia is stored in a sealed, pressurized vessel like a High Pressure Receiver. At this higher pressure, its boiling point is much, much higher. For example, on an 85°F day, the pressure inside the receiver might be around 152 psig. At that pressure, ammonia's boiling point is... 85°F! It is in a saturated state, ready to boil, but it won't unless it can absorb more energy (latent heat). It remains a stable liquid because the pressure of the system prevents it from boiling away." },
             { q: "What's the simple difference between superheat and subcooling?", a: "Superheat is heat added to a vapor *after* it has finished boiling. Subcooling is heat removed from a liquid *after* it has finished condensing. Both are important for system health and efficiency." },
             { q: "Why do large systems use two-stage compression?", a: "It saves energy. When the pressure difference between the evaporator and condenser is very large (like for a -40°F freezer), compressing the gas in one step is inefficient and creates extreme heat. Using two smaller compression steps with an intercooler in between significantly reduces the total energy required." },
             { q: "What is a 'ton of refrigeration'?", a: "It's a measure of cooling capacity. One ton of refrigeration is the amount of heat energy required to melt one ton (2,000 lbs) of ice in a 24-hour period. In modern terms, it's equal to 12,000 BTU/hour or 200 BTU/minute." },
@@ -1981,6 +2416,7 @@
             const container = document.getElementById('qa-container');
             if (!container) return;
             
+            container.innerHTML = ''; // Clear existing
             qaData.forEach(item => {
                 const qaItem = document.createElement('div');
                 qaItem.className = 'qa-item';
@@ -2003,6 +2439,171 @@
             });
         }
 
+        // --- Flash Gas Calculator Logic ---
+        // Enthalpy data (BTU/lb). h_f = saturated liquid, h_g = saturated vapor
+        const refrigerantData = {
+            'R717': {
+                '-40': { h_f: 0, h_g: 600.5 }, '-20': { h_f: 21.8, h_g: 606.7 }, '-5': {h_f: 37.3, h_g: 609.9 }, '0': { h_f: 43.8, h_g: 612.0 },
+                '20': { h_f: 66.1, h_g: 616.6 }, '40': { h_f: 88.6, h_g: 620.5 }, '85': { h_f: 137.6, h_g: 629.4 },
+                '95': { h_f: 148.9, h_g: 630.7 }, '100': { h_f: 154.8, h_g: 631.5 }
+            },
+            'R134a': {
+                '-20': { h_f: 6.3, h_g: 89.4 }, '0': { h_f: 12.0, h_g: 92.5 }, '20': { h_f: 18.2, h_g: 95.6 },
+                '40': { h_f: 25.7, h_g: 98.9 }, '85': { h_f: 39.8, h_g: 104.9 }, '95': { h_f: 42.8, h_g: 106.3 },
+                '100': { h_f: 45.4, h_g: 107.5 }
+            },
+            'R744': {
+                '-20': { h_f: 11.7, h_g: 124.2 }, '0': { h_f: 20.9, h_g: 121.2 }, '20': { h_f: 28.5, h_g: 117.8 },
+                '40': { h_f: 35.8, h_g: 113.8 }, '75': { h_f: 53.0, h_g: 90.0 }, '95': { h_f: 56.5, h_g: 75.0 },
+                '100': { h_f: 60.1, h_g: 60.0 }
+            }
+        };
+        // Pressure-Temperature data (PSIA -> F)
+        const pressureTempData = {
+             'R717': {
+                '10.41': -40, '18.30': -20,  '23.74':-5, '30.42': 0, '38.51': 10, '48.21': 20, '73.32': 40, 
+                '166.4': 85, '197.2': 95, '211.9': 100
+            },
+            'R134a': {
+                '11.9': -20, '21.1': 0, '33.0': 20, '49.8': 40, '109.9': 85,
+                '127.3': 95, '136.1': 100
+            },
+            'R744': {
+                '209.5': -20, '305.1': 0, '429.6': 20, '587.8': 40, '875.0': 75
+            }
+        };
+
+        function getEnthalpy(refrigerant, temp) {
+            const data = refrigerantData[refrigerant];
+            const temps = Object.keys(data).map(Number).sort((a,b) => a - b);
+            
+            if (temp <= temps[0]) return data[temps[0]];
+            if (temp >= temps[temps.length - 1]) return data[temps[temps.length - 1]];
+            
+            let lowerTemp, upperTemp;
+            for (let i = 0; i < temps.length - 1; i++) {
+                if (temp >= temps[i] && temp < temps[i+1]) {
+                    lowerTemp = temps[i];
+                    upperTemp = temps[i+1];
+                    break;
+                }
+            }
+            
+            const lowerData = data[lowerTemp];
+            const upperData = data[upperTemp];
+            const t_ratio = (temp - lowerTemp) / (upperTemp - lowerTemp);
+            
+            if(isNaN(t_ratio) || !isFinite(t_ratio)) return lowerData;
+
+            const h_f = lowerData.h_f + (upperData.h_f - lowerData.h_f) * t_ratio;
+            const h_g = lowerData.h_g + (upperData.h_g - lowerData.h_g) * t_ratio;
+            return { h_f, h_g };
+        }
+
+        function getTempFromPressure(refrigerant, pressure) {
+             const data = pressureTempData[refrigerant];
+            const pressurePSIA = pressure;
+
+            const pressures = Object.keys(data).map(Number).sort((a,b) => a - b);
+            
+            if (pressurePSIA <= pressures[0]) return data[pressures[0]];
+            if (pressurePSIA >= pressures[pressures.length - 1]) return data[pressures[pressures.length - 1]];
+
+            let lowerPressure, upperPressure;
+            for (let i = 0; i < pressures.length - 1; i++) {
+                if (pressurePSIA >= pressures[i] && pressurePSIA < pressures[i+1]) {
+                    lowerPressure = pressures[i];
+                    upperPressure = pressures[i+1];
+                    break;
+                }
+            }
+             if (!lowerPressure || !upperPressure) { 
+                return data[pressures[0]];
+             }
+
+            const lowerTemp = data[lowerPressure];
+            const upperTemp = data[upperPressure];
+            const p_ratio = (pressurePSIA - lowerPressure) / (upperPressure - lowerPressure);
+
+            if(isNaN(p_ratio) || !isFinite(p_ratio)) return lowerTemp;
+
+            return lowerTemp + (upperTemp - lowerTemp) * p_ratio;
+        }
+        
+        function getTemp(refrigerant, value, unit) {
+            if (unit === 'F') {
+                return value;
+            }
+            const pressurePSIA = (unit === 'PSIG') ? value + 14.7 : value;
+            return getTempFromPressure(refrigerant, pressurePSIA);
+        }
+
+        function calculateFlashGas() {
+            const refrigerant = document.getElementById('refrigerant').value;
+            const condValue = parseFloat(document.getElementById('condValue').value);
+            const condUnit = document.getElementById('condUnit').value;
+            const evapValue = parseFloat(document.getElementById('evapValue').value);
+            const evapUnit = document.getElementById('evapUnit').value;
+            const isSubcooled = document.getElementById('isSubcooled').checked;
+            const subcoolingAmount = parseFloat(document.getElementById('subcoolingAmount').value);
+
+            if (isNaN(condValue) || isNaN(evapValue)) {
+                return;
+            }
+            
+            const condTemp = getTemp(refrigerant, condValue, condUnit);
+            const evapTemp = getTemp(refrigerant, evapValue, evapUnit);
+            
+            let liquidInletTemp = condTemp;
+            if (isSubcooled && !isNaN(subcoolingAmount)) {
+                liquidInletTemp = condTemp - subcoolingAmount;
+            }
+            
+            const h_inlet = getEnthalpy(refrigerant, liquidInletTemp).h_f;
+            const evapProps = getEnthalpy(refrigerant, evapTemp);
+            const h_f_evap = evapProps.h_f;
+            const h_g_evap = evapProps.h_g;
+            const h_fg_evap = h_g_evap - h_f_evap;
+
+            if (h_fg_evap <= 0) {
+                 return;
+            }
+
+            let flashGasFraction = (h_inlet - h_f_evap) / h_fg_evap;
+            flashGasFraction = Math.max(0, Math.min(1, flashGasFraction));
+            const flashGasPercent = flashGasFraction * 100;
+            const liquidPercent = 100 - flashGasPercent;
+
+            // Update Main Display
+            document.getElementById('calcResult').style.display = 'block';
+            document.getElementById('flashGasPercent').textContent = `${flashGasPercent.toFixed(1)}%`;
+            document.getElementById('flashGasBar').style.width = `${flashGasPercent}%`;
+            document.getElementById('liquidBar').style.width = `${liquidPercent}%`;
+            
+            // Update Detailed Breakdown
+            document.getElementById('result-formula-h').textContent = h_inlet.toFixed(1);
+            document.getElementById('result-formula-hf').textContent = h_f_evap.toFixed(1);
+            document.getElementById('result-formula-hfg').textContent = h_fg_evap.toFixed(1);
+            document.getElementById('flashGasDecimal').textContent = flashGasFraction.toFixed(3);
+            
+            
+
+
+            // Update Analysis Text
+            let analysis = '';
+            if (flashGasPercent > 35) {
+                analysis = `A very high flash gas percentage! This is typical for CO₂ in transcritical mode or systems with very high lift, indicating a significant loss in capacity. Advanced strategies like parallel compression would be beneficial.`;
+            } else if (flashGasPercent > 20) {
+                analysis = `At these conditions, over one-fifth of the refrigerant mass becomes vapor before even entering the evaporator, contributing nothing to the cooling load. Improving subcooling could provide significant efficiency gains.`;
+            } else if (flashGasPercent > 10) {
+                analysis = `A moderate amount of flash gas. This is a common operating range. Ensuring the liquid line is free of restrictions is key to preventing premature flashing.`;
+            } else {
+                analysis = `An excellent, low flash gas percentage. This indicates very efficient operation, likely due to significant subcooling or a low temperature difference (lift) between the condenser and evaporator.`;
+            }
+            document.getElementById('resultAnalysis').textContent = analysis;
+            
+             document.getElementById('final-summary-text').textContent = `Based on your inputs, the liquid refrigerant has too much energy for the low-pressure side. It must instantly boil ${flashGasPercent.toFixed(1)}% of its own mass to get rid of this excess energy, which leaves only ${liquidPercent.toFixed(1)}% of the liquid to perform the actual cooling in the evaporator.`;
+        }
 
         // --- Initial Load ---
         document.addEventListener('DOMContentLoaded', () => {
@@ -2010,15 +2611,34 @@
             highlightStep(1);
             showSystemRecommendation('large');
             buildQAPage();
+            calculateFlashGas(); // Run once on load with default values
             
-            // Set the creation date dynamically
+            // Set the creation date statically
             const dateElement = document.getElementById('creationDate');
             if(dateElement) {
-                 const today = new Date();
-                 const options = { year: 'numeric', month: 'long', day: 'numeric' };
-                 dateElement.textContent += today.toLocaleDateString('en-US', options);
+                 dateElement.textContent += "July 30, 2025";
+            }
+            
+            // Event listener for subcooled checkbox
+            const subcooledCheckbox = document.getElementById('isSubcooled');
+            const subcoolingAmountGroup = document.getElementById('subcoolingAmountGroup');
+            if(subcooledCheckbox && subcoolingAmountGroup) {
+                subcooledCheckbox.addEventListener('change', () => {
+                    if (subcooledCheckbox.checked) {
+                        subcoolingAmountGroup.style.display = 'flex';
+                    } else {
+                        subcoolingAmountGroup.style.display = 'none';
+                    }
+                });
             }
         });
     </script>
 </body>
 </html>
+
+
+
+
+
+
+
